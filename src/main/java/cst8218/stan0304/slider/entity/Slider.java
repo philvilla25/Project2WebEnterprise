@@ -4,28 +4,28 @@
  */
 package cst8218.stan0304.slider.entity;
 
+import cst8218.stan0304.slider.resources.sliderNumbers;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import java.io.Serializable;
-
 /**
  *
  * @author thpst
  */
 @Entity
-public class Slider implements Serializable{
+public class Slider extends sliderNumbers implements Serializable{
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
-    private int size = cst8218.stan0304.slider.entity.sliderNumbers.INITIAL_SIZE;
+    private int size = INITIAL_SIZE;
     private int x = 0;
     private int y = 0;
-    private int currentTravel = cst8218.stan0304.slider.entity.sliderNumbers.INITIAL_SIZE;
+    private int currentTravel = INITIAL_SIZE;
     
     public Long getId() {
         return id;
