@@ -2,14 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package cst8218.stan0304.slider.resources;
+package cst8218.stan0304.slider.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import java.io.Serializable;
-import cst8218.stan0304.slider.resources.sliderNumbers;
 
 /**
  *
@@ -23,10 +22,10 @@ public class Slider implements Serializable{
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
-    private int size = cst8218.stan0304.slider.resources.sliderNumbers.INITIAL_SIZE;
+    private int size = cst8218.stan0304.slider.entity.sliderNumbers.INITIAL_SIZE;
     private int x = 0;
     private int y = 0;
-    private int currentTravel = cst8218.stan0304.slider.resources.sliderNumbers.INITIAL_SIZE;
+    private int currentTravel = cst8218.stan0304.slider.entity.sliderNumbers.INITIAL_SIZE;
     
     public Long getId() {
         return id;
@@ -34,6 +33,38 @@ public class Slider implements Serializable{
 
     public void setId(Long id) {
         this.id = id;
+    }
+    
+    public int x() {
+        return x;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+    
+    public int y() {
+        return y;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+    
+    public int size() {
+        return size;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
+    }
+    
+    public int currentTravel() {
+        return currentTravel;
+    }
+
+    public void setCurrentTravel(int currentTravel) {
+        this.currentTravel = currentTravel;
     }
 
     @Override
