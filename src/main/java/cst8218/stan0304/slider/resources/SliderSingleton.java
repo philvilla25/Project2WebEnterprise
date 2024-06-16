@@ -16,8 +16,7 @@ import java.util.List;
 import static cst8218.stan0304.slider.resources.sliderNumbers.CHANGE_RATE;
 
 /**
- *
- * @author thpst
+ * singleton class starts when the application is run. constantly calls timeStep() function.
  */
 @Singleton
 @LocalBean

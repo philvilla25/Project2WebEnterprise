@@ -11,8 +11,7 @@ import jakarta.persistence.PersistenceContext;
 import cst8218.stan0304.slider.entity.Slider;
 
 /**
- *
- * @author thpst
+ * extends the abstract facade class
  */
 @Stateless
 @LocalBean

@@ -3,9 +3,9 @@
       
     <!-- Define Persistence Unit -->
       
-    <persistence-unit name="slider_persistence_unit" transaction-type="RESOURCE_LOCAL">
+    <persistence-unit name="slider_persistence_unit" transaction-type="JTA">
             
-        <non-jta-data-source>java:comp/DefaultDataSource</non-jta-data-source>
+        <jta-data-source>java:comp/DefaultDataSource</jta-data-source>
             
         <properties>
                   

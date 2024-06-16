@@ -20,6 +20,10 @@ import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.PersistenceUnit;
 import jakarta.transaction.UserTransaction;
 
+/*
+controller for slider class,
+contains methods for data manipulation for slider objects
+*/
 @Named("sliderController")
 @SessionScoped
 public class SliderController implements Serializable {

@@ -5,8 +5,7 @@
 package cst8218.stan0304.slider.resources;
 
 /**
- *
- * @author thpst
+ * contains values to be used in slider entity class.
  */
 public class sliderNumbers {
     

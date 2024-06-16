@@ -19,8 +19,9 @@ import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Root;
 
 /**
- *
- * @author ian
+ * refactored abstract class from addressbook
+ * used in SliderFacade, contains useful functions for changing the persistence objects.
+ * 
  */
 public abstract class AbstractFacade<T> {
     private Class<T> entityClass;

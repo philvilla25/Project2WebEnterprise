@@ -12,8 +12,10 @@ import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotNull;
 import java.io.Serializable;
 /**
- *
- * @author thpst
+ * Slider entity class, contains variables used for slider mechanics.
+ * extends sliderNumbers to fetch pre-initialised values.
+ * 
+ * timeStep function simulates one unit of time passing for the slider.
  */
 @Entity
 public class Slider extends sliderNumbers implements Serializable{
@@ -26,13 +28,13 @@ public class Slider extends sliderNumbers implements Serializable{
     private int size = INITIAL_SIZE;
     
     @NotNull
-    private int x = 0;
+    private int x;
     @NotNull
-    private int y = 0;
+    private int y;
     private int currentTravel = INITIAL_SIZE;
-    private int maxTravel = 1;
-    private int movementDirection = 1;
-    private int dirChangeCount = 0;
+    private int maxTravel;
+    private int movementDirection;
+    private int dirChangeCount;
     
     public Long getId() {
         return id;
@@ -143,7 +145,7 @@ public class Slider extends sliderNumbers implements Serializable{
         }
     }
     
-        public void update(Slider newSlider) {
+    public void update(Slider newSlider) {
         if (newSlider.size != 0) this.size = newSlider.size;
         if (newSlider.x != 0) this.x = newSlider.x;
         if (newSlider.y != 0) this.y = newSlider.y;
