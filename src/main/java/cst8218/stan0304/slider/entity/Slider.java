@@ -9,6 +9,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotNull;
 import java.io.Serializable;
 /**
  *
@@ -23,7 +24,10 @@ public class Slider extends sliderNumbers implements Serializable{
     private Long id;
     
     private int size = INITIAL_SIZE;
+    
+    @NotNull
     private int x = 0;
+    @NotNull
     private int y = 0;
     private int currentTravel = INITIAL_SIZE;
     private int maxTravel = 1;
@@ -137,6 +141,16 @@ public class Slider extends sliderNumbers implements Serializable{
                 }
             }
         }
+    }
+    
+        public void update(Slider newSlider) {
+        if (newSlider.size != 0) this.size = newSlider.size;
+        if (newSlider.x != 0) this.x = newSlider.x;
+        if (newSlider.y != 0) this.y = newSlider.y;
+        if (newSlider.currentTravel != 0) this.currentTravel = newSlider.currentTravel;
+        if (newSlider.maxTravel != 0) this.maxTravel = newSlider.maxTravel;
+        if (newSlider.movementDirection != 0) this.movementDirection = newSlider.movementDirection;
+        if (newSlider.dirChangeCount != 0) this.dirChangeCount = newSlider.dirChangeCount;
     }
 
 }
