@@ -14,6 +14,7 @@ public class sliderNumbers {
     public static int CHANGE_RATE = 10;
     public static int TRAVEL_SPEED = 20;
     public static int MAX_DIR_CHANGES = 3;
+    public static final int DECAY_RATE = 1;
     
     //limits
     public static int X_LIMIT = 5;
