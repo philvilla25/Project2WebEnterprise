@@ -26,6 +26,9 @@ public class Slider extends sliderNumbers implements Serializable{
     private int x = 0;
     private int y = 0;
     private int currentTravel = INITIAL_SIZE;
+    private int maxTravel = 1;
+    private int movementDirection = 1;
+    private int dirChangeCount = 0;
     
     public Long getId() {
         return id;
@@ -66,6 +69,30 @@ public class Slider extends sliderNumbers implements Serializable{
     public void setCurrentTravel(int currentTravel) {
         this.currentTravel = currentTravel;
     }
+    
+    public int getMaxTravel() {
+        return maxTravel;
+    }
+
+    public void setMaxTravel(int maxTravel) {
+        this.maxTravel = maxTravel;
+    }
+
+    public int getMovementDirection() {
+        return movementDirection;
+    }
+
+    public void setMovementDirection(int movementDirection) {
+        this.movementDirection = movementDirection;
+    }
+
+    public int getDirChangeCount() {
+        return dirChangeCount;
+    }
+
+    public void setDirChangeCount(int dirChangeCount) {
+        this.dirChangeCount = dirChangeCount;
+    }
 
     @Override
     public int hashCode() {
@@ -92,4 +119,24 @@ public class Slider extends sliderNumbers implements Serializable{
         return "cst8218.stan0304.slider.resources.Slider[ id=" + id + " ]";
     }
     
+    /**
+    * Updates the position and state of the slider for one unit of time.
+    * The slider moves in the current direction by a constant travel speed.
+    * If the slider reaches or exceeds the maximum travel distance, it reverses direction.
+    * After a certain number of direction changes, the maximum travel distance decreases by the decay rate.
+    */
+    public void timeStep() {
+        if (maxTravel > 0){
+            currentTravel += movementDirection * TRAVEL_SPEED;
+            if (Math.abs(currentTravel) >= maxTravel){
+                movementDirection = -movementDirection;
+                dirChangeCount++;
+                if (dirChangeCount > MAX_DIR_CHANGES){
+                    maxTravel -= DECAY_RATE;
+                    dirChangeCount = 0;
+                }
+            }
+        }
+    }
+
 }
