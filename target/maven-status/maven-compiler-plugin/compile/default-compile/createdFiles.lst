@@ -7,6 +7,7 @@ cst8218\stan0304\users\SlideruserJpaController.class
 cst8218\stan0304\slider\SliderController$SliderControllerConverter.class
 cst8218\stan0304\slider\exceptions\IllegalOrphanException.class
 cst8218\stan0304\slider\exceptions\RollbackFailureException.class
+cst8218\stan0304\slider\swing\MainFrame.class
 cst8218\stan0304\slider\business\SliderFacade.class
 cst8218\stan0304\users\Slideruser.class
 cst8218\stan0304\slider\JakartaRestConfiguration.class
