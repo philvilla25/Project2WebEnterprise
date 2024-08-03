@@ -7,6 +7,8 @@ package cst8218.stan0304.users;
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.NamedQueries;
 import jakarta.persistence.NamedQuery;
@@ -15,6 +17,11 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
+import jakarta.enterprise.inject.Instance;
+import jakarta.enterprise.inject.spi.CDI;
+import jakarta.security.enterprise.identitystore.Pbkdf2PasswordHash;
+import jakarta.security.enterprise.identitystore.PasswordHash;
+import java.util.HashMap;
 
 /**
  *
@@ -26,24 +33,28 @@ import java.io.Serializable;
 @NamedQueries({
     @NamedQuery(name = "Slideruser.findAll", query = "SELECT s FROM Slideruser s"),
     @NamedQuery(name = "Slideruser.findById", query = "SELECT s FROM Slideruser s WHERE s.id = :id"),
-    @NamedQuery(name = "Slideruser.findByUserid", query = "SELECT s FROM Slideruser s WHERE s.userid = :userid"),
-    @NamedQuery(name = "Slideruser.findByPassword", query = "SELECT s FROM Slideruser s WHERE s.password = :password"),
-    @NamedQuery(name = "Slideruser.findByGroupname", query = "SELECT s FROM Slideruser s WHERE s.groupname = :groupname")})
+})
 public class Slideruser implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Id
     @Basic(optional = false)
     @NotNull
     @Column(name = "ID")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Double id;
+    
+    
     @Size(max = 50)
     @Column(name = "USERID")
     private String userid;
+    
+    
     @Size(max = 500)
     @Column(name = "PASSWORD")
     private String password;
+    
+    
     @Size(max = 50)
     @Column(name = "GROUPNAME")
     private String groupname;
@@ -72,11 +83,20 @@ public class Slideruser implements Serializable {
     }
 
     public String getPassword() {
-        return password;
+        return "";
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        // initialize a PasswordHash object which will generate password hashes
+        Instance<? extends PasswordHash> instance = CDI.current().select(Pbkdf2PasswordHash.class);
+        PasswordHash passwordHash = instance.get();
+        passwordHash.initialize(new HashMap<String,String>()); // todo: are the defaults good enough?
+        
+        // now we can generate a password entry for a given password
+        //String passwordEntry = "password"; //pretend the user has chosen a password mySecretPassword
+        
+        this.password = passwordHash.generate(password.toCharArray());
+        //at this point, passwordEntry refers to a salted/hashed password entry String corresponding to the clear text “mySecretPassword”
     }
 
     public String getGroupname() {
