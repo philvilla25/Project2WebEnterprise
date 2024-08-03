@@ -27,9 +27,9 @@ public class Slider extends sliderNumbers implements Serializable{
     
     private int size = INITIAL_SIZE;
     
-    @NotNull
+    
     private int x;
-    @NotNull
+    
     private int y;
     private int currentTravel = INITIAL_SIZE;
     private int maxTravel;
@@ -44,7 +44,7 @@ public class Slider extends sliderNumbers implements Serializable{
         this.id = id;
     }
     
-    public int x() {
+    public int getx() {
         return x;
     }
 
@@ -52,7 +52,7 @@ public class Slider extends sliderNumbers implements Serializable{
         this.x = x;
     }
     
-    public int y() {
+    public int gety() {
         return y;
     }
 

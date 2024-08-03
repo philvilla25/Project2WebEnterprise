@@ -34,6 +34,18 @@
                         </h:column>
                         <h:column>
                             <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSliderTitle_x}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.x}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSliderTitle_y}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.y}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
                                 <h:outputText value="#{bundle.ListSliderTitle_movementDirection}"/>
                             </f:facet>
                             <h:outputText value="#{item.movementDirection}"/>

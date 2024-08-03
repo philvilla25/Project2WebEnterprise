@@ -17,6 +17,13 @@
                 <h:panelGrid columns="2">
                     <h:outputLabel value="#{bundle.CreateSliderLabel_maxTravel}" for="maxTravel" />
                     <h:inputText id="maxTravel" value="#{sliderController.selected.maxTravel}" title="#{bundle.CreateSliderTitle_maxTravel}" />
+                    
+                    <h:outputLabel value="#{bundle.CreateSliderLabel_x}" for="x" />
+                    <h:inputText id="x" value="#{sliderController.selected.x}" title="#{bundle.CreateSliderTitle_x}" />
+                    
+                    <h:outputLabel value="#{bundle.CreateSliderLabel_y}" for="x" />
+                    <h:inputText id="x" value="#{sliderController.selected.y}" title="#{bundle.CreateSliderTitle_y}" />
+                    
                     <h:outputLabel value="#{bundle.CreateSliderLabel_movementDirection}" for="movementDirection" />
                     <h:inputText id="movementDirection" value="#{sliderController.selected.movementDirection}" title="#{bundle.CreateSliderTitle_movementDirection}" />
                     <h:outputLabel value="#{bundle.CreateSliderLabel_dirChangeCount}" for="dirChangeCount" />
