@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Hello World</title>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script async src="https://ga.jspm.io/npm:es-module-shims@1.7.0/dist/es-module-shims.js"></script>
+    <script type="importmap">
+    {
+        "imports": {
+            "react": "https://esm.sh/react?dev",
+            "react-dom/client": "https://esm.sh/react-dom/client?dev"
+        }
+    }
+    </script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel" data-type="module">
+        import React, { useEffect, useState, StrictMode, useRef } from 'react';
+        import { createRoot } from 'react-dom/client';
+
+        function MyApp() {
+            const [sliders, setSliders] = useState([
+                {"currentTravel": "", "maxTravel": "", "movementDirection": "", "dirChangeCount": "", "x": "", "y": ""}
+            ]);
+
+            const [selected, setSelected] = useState({});
+
+            useEffect(() => {
+                async function getSliders() {
+                    let result = await fetch(
+                        "http://localhost:8080/slider-thomas/resources/cst8218.stan0304.slider.entity.slider/",
+                        {
+                            method: 'GET',
+                            headers: {'Accept': 'application/json',
+                            'Cache-Control': 'no-cache'}
+                        }
+                    );
+                    const json = await result.json();
+                    setSliders(json);
+                }
+                const timeInterval = setInterval(getSliders, 300);
+                return () => clearInterval(timeInterval);
+            }, []);
+
+            const handleClick = (event, field, index) => {
+                setSelected({ "index": index, "field": field, "value": event.target.value });
+            };
+
+            function handleChange(event, field, index) {
+                setSelected({ "index": index, "field": selected.field, "value": event.target.value });
+            }
+
+            const handleSubmit = (event) => {
+                var newItem;
+                sliders.map((item, key) => {
+                    if (key === selected.index) {
+                        newItem = Object.assign({}, item, { [selected.field]: selected.value });
+                        setSelected({});
+                        fetch("http://localhost:8080/slider-thomas/resources/cst8218.stan0304.slider.entity.slider/" + item.id, {
+                            method: 'PUT',
+                            body: JSON.stringify(newItem),
+                            headers: {
+                                'Content-type': 'application/json',
+                                'Authorization': 'Basic ' + btoa('tgk' + ":" + 'tgkpass')
+                            }
+                        })
+                        .then(res => res.text());
+                    }
+                });
+                event.preventDefault();
+            };
+
+            return (
+                <form onSubmit={handleSubmit}>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>currentTravel</th>
+                                <th>dirChangeCount</th>
+                                <th>maxTravel</th>
+                                <th>movementDirection</th>
+                                <th>size</th>
+                                <th>x</th>
+                                <th>y</th>
+                                {selected.field != null ? <th>New {selected.field}</th> : ""}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {sliders.map((item, key) => (
+                                <tr key={key}>
+                                    <td><input type="text" name={item.id} value={item.currentTravel} onClick={(e) => handleClick(e, "currentTravel", key)} onChange={(e) => handleChange(e, "currentTravel", key)} /></td>
+                                    <td><input type="text" name={item.id} value={item.dirChangeCount} onClick={(e) => handleClick(e, "dirChangeCount", key)} onChange={(e) => handleChange(e, "dirChangeCount", key)} /></td>
+                                    <td><input type="text" name={item.id} value={item.maxTravel} onClick={(e) => handleClick(e, "maxTravel", key)} onChange={(e) => handleChange(e, "maxTravel", key)} /></td>
+                                    <td><input type="text" name={item.id} value={item.movementDirection} onClick={(e) => handleClick(e, "movementDirection", key)} onChange={(e) => handleChange(e, "movementDirection", key)} /></td>
+                                    <td><input type="text" name={item.id} value={item.size} onClick={(e) => handleClick(e, "size", key)} onChange={(e) => handleChange(e, "size", key)} /></td>
+                                    <td><input type="text" name={item.id} value={item.x} onClick={(e) => handleClick(e, "x", key)} onChange={(e) => handleChange(e, "x", key)} /></td>
+                                    <td><input type="text" name={item.id} value={item.y} onClick={(e) => handleClick(e, "y", key)} onChange={(e) => handleChange(e, "y", key)} /></td>
+                                    {selected.index === key ? (
+                                        <td><input id="selected" type="text" size="7" name="selected" autoFocus value={selected.value} onChange={(e) => handleChange(e, "selected", key)} /></td>
+                                    ) : ""}
+                                </tr>
+                            ))}
+                            {selected.index != null ? (
+                                <tr>
+                                    <td colSpan="7"></td>
+                                    <td><input type="submit" value="Submit" /></td>
+                                </tr>
+                            ) : (
+                                <tr><td colSpan="7"></td></tr>
+                            )}
+                        </tbody>
+                    </table>
+                </form>
+            );
+        }
+
+        const container = document.getElementById('root');
+        const root = createRoot(container);
+        root.render(<MyApp />);
+    </script>
+</body>
+</html>
