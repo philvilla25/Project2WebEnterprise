@@ -60,7 +60,7 @@ public class Slider extends sliderNumbers implements Serializable{
         this.y = y;
     }
     
-    public int size() {
+    public int getSize() {
         return size;
     }
 
@@ -68,7 +68,7 @@ public class Slider extends sliderNumbers implements Serializable{
         this.size = size;
     }
     
-    public int currentTravel() {
+    public int getCurrentTravel() {
         return currentTravel;
     }
 

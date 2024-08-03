@@ -65,7 +65,7 @@ public class SliderFacadeREST extends AbstractFacade<Slider> {
                 
             // if id is not null and the id is not in the databse, bad request is returned
             }else{
-                return Response.status(Response.Status.BAD_REQUEST).entity("Slider with id " + entity.getId() + " does not exist.").build();
+                return Response.status(Response.Status.NOT_FOUND).entity("Slider with id " + entity.getId() + " does not exist.").build();
             }
         }
     }
@@ -81,11 +81,11 @@ public class SliderFacadeREST extends AbstractFacade<Slider> {
         Slider existingSlider = super.find(id);
         //check if the existing slider is null
         if (existingSlider == null) {
-            return Response.status(Response.Status.BAD_REQUEST).entity("Slider with ID " + id + " not in database").build();
+            return Response.status(Response.Status.NOT_FOUND).entity("Slider with ID " + id + " not in database").build();
         }
         // Check if the request id matches the entity id
         if (entity.getId() != null && !entity.getId().equals(id)) {
-        return Response.status(Response.Status.BAD_REQUEST).entity("ID in the URL does not match ID in the request body").build();
+        return Response.status(Response.Status.NOT_FOUND).entity("ID in the URL does not match ID in the request body").build();
         }
         //update the existing Slider with new non-null values from the entity
         existingSlider.update(entity);
@@ -99,36 +99,16 @@ public class SliderFacadeREST extends AbstractFacade<Slider> {
     @PUT
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     public Response putOnRootResource() {
-    return Response.status(Response.Status.FORBIDDEN)
+    return Response.status(Response.Status.NOT_ACCEPTABLE)
             .entity("PUT method not allowed on the root resource")
             .build();
     }
     
-    //put with id in the parameter replaces the slider having the same id in the databse with the slider in the body of request.
     @PUT
     @Path("{id}")
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public Response edit(@PathParam("id") Long id, Slider entity) {
-    // Find the existing Slider by ID
-    Slider existingSlider = super.find(id);
-    // Check if the existing Slider is null
-        if (existingSlider == null) {
-            return Response.status(Response.Status.BAD_REQUEST)
-                    .entity("Slider with ID " + id + " does not exist")
-                    .build();
-        }
-    // Check if the ID in the URL matches the ID in the request body
-    if (entity.getId() != null && !entity.getId().equals(id)) {
-        return Response.status(Response.Status.BAD_REQUEST).entity("ID in the URL does not match ID in the request body").build();
-        }
-        // Set the ID of the entity to ensure it matches the URL ID
-        entity.setId(id);
-        // Perform the replacement
-        super.remove(existingSlider);
-        super.create(entity);
-        // Return a 200 OK response with the replaced Slider
-        return Response.status(Response.Status.OK).entity(entity).build();
-    
+    public void edit(@PathParam("id") Long id, Slider entity) {
+        super.edit(entity);
     }
 
     //deletes slider iwith matching id

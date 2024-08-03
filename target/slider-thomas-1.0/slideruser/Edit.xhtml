@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditSlideruserTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditSlideruserLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{slideruserController.selected.id}" title="#{bundle.EditSlideruserTitle_id}" required="true" requiredMessage="#{bundle.EditSlideruserRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.EditSlideruserLabel_userid}" for="userid" />
+                    <h:inputText id="userid" value="#{slideruserController.selected.userid}" title="#{bundle.EditSlideruserTitle_userid}" />
+                    <h:outputLabel value="#{bundle.EditSlideruserLabel_password}" for="password" />
+                    <h:inputText id="password" value="#{slideruserController.selected.password}" title="#{bundle.EditSlideruserTitle_password}" />
+                    <h:outputLabel value="#{bundle.EditSlideruserLabel_groupname}" for="groupname" />
+                    <h:inputText id="groupname" value="#{slideruserController.selected.groupname}" title="#{bundle.EditSlideruserTitle_groupname}" />
+                </h:panelGrid>
+                <h:commandLink action="#{slideruserController.update}" value="#{bundle.EditSlideruserSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditSlideruserViewLink}"/>
+                <br />
+                <h:commandLink action="#{slideruserController.prepareList}" value="#{bundle.EditSlideruserShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditSlideruserIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
