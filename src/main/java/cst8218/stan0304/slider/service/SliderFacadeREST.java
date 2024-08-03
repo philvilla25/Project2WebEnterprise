@@ -7,6 +7,7 @@ package cst8218.stan0304.slider.service;
 import cst8218.stan0304.slider.entity.Slider;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
@@ -29,10 +30,17 @@ import java.util.List;
 @Path("cst8218.stan0304.slider.entity.slider")
 public class SliderFacadeREST extends AbstractFacade<Slider> {
 
+    @PersistenceContext(unitName = "slider_persistence_unit")
+    private EntityManager em;
+    
     public SliderFacadeREST() {
         super(Slider.class);
     }
 
+    @Override
+    protected EntityManager getEntityManager() {
+        return em;
+    }
     /*
     post on the root resource creates a new slider if the id in url is null
     if teh id is not null and exists in the databse, update the existing by using the edit() method in the abstract facade class.
@@ -163,11 +171,5 @@ public class SliderFacadeREST extends AbstractFacade<Slider> {
         return String.valueOf(super.count());
     }
     
-    //unsupported feature???
-    //(was automatically generated)
-    @Override
-    protected EntityManager getEntityManager() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
     
 }
