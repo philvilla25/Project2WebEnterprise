@@ -21,6 +21,7 @@
     <welcome-file-list>
         <welcome-file>faces/index.xhtml</welcome-file>
     </welcome-file-list>
+    
     <security-constraint>
         <display-name>Slider Login</display-name>
         <web-resource-collection>
@@ -45,4 +46,16 @@
             <role-name>Admin</role-name>
         </auth-constraint>
     </security-constraint>
+    <security-constraint>
+        <display-name>REST API Login</display-name>
+        <web-resource-collection>
+            <web-resource-name>Protected REST API</web-resource-name>
+            <url-pattern>/cst8218.stan0304.slider.entity.slider/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>RestGroup</role-name>
+            <role-name>Admin</role-name>
+        </auth-constraint>
+    </security-constraint>
+
 </web-app>
