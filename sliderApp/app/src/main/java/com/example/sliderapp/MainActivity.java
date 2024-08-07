@@ -1,5 +1,6 @@
 package com.example.sliderapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -9,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,6 +26,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.firebase.auth.FirebaseAuth;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -36,10 +39,10 @@ public class MainActivity extends AppCompatActivity {
     private ImageView slider;
     private Handler handler;
     private Runnable fetchRunnable;
-    private static final int FETCH_INTERVAL = 10000; // 200 milliseconds
+    private static final int FETCH_INTERVAL = 700; // 200 milliseconds
     private RequestQueue reqQueue;
     private String url = "http://10.0.2.2:8080/Project3/resources/cst8218.stan0304.slider.entity.slider/";
-
+    Button logout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         xTextView = findViewById(R.id.xTextView);
         yTextView = findViewById(R.id.yTextView);
         Button updateButton = findViewById(R.id.update_btn);
-
+        logout = findViewById(R.id.logout_btn);
         slider = findViewById(R.id.slider_image);
 
 
@@ -100,6 +103,19 @@ public class MainActivity extends AppCompatActivity {
 
         // Start the periodic task
         handler.post(fetchRunnable);
+
+
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                FirebaseAuth.getInstance().signOut();
+                Toast.makeText(MainActivity.this, "Logout Account", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getApplicationContext(), Login.class);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 
     private void makeGetRequest(String url) {
@@ -119,7 +135,6 @@ public class MainActivity extends AppCompatActivity {
                             int x = sliderData.getInt("x");
                             int y = sliderData.getInt("y");
 
-
                             Log.d(TAG, "ID: " + idGet);
                             Log.d(TAG, "Current Travel: " + currentTravel);
                             Log.d(TAG, "Direction Change Count: " + dirChangeCount);
@@ -135,9 +150,8 @@ public class MainActivity extends AppCompatActivity {
                             movementDirectionTextView.setText(String.valueOf(movementDirection));
                             xTextView.setText(String.valueOf(x));
                             yTextView.setText(String.valueOf(y));
-                            //moveSlider(x, y, maxTravel);
 
-                            updateHorizontalBias(x);
+                            updateHorizontalBias(x, y, movementDirection, maxTravel);
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -146,22 +160,29 @@ public class MainActivity extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-
                         Log.e(TAG, "Error: " + error.getMessage(), error);
                     }
                 }
         );
         reqQueue.add(getRequest);
     }
-    private void updateHorizontalBias(int x) {
-        ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) slider.getLayoutParams();
 
-        // Assuming you want to normalize x value to be between 0 and 1 for bias
-        float normalizedBias = Math.max(0, Math.min(1, (float) x / 100)); // Adjust 100 based on your scale
+    private void updateHorizontalBias(int x, int y, int movementDirection, int maxTravel) {
+        ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) slider.getLayoutParams();
+        int MAX_TRAVEL = 1000;
+        // Compute the bias based on x, y, movementDirection, and maxTravel
+        float normalizedBias;
+        if (movementDirection <= 0) { // Horizontal movement
+            normalizedBias = Math.max(0, Math.min(1, (float) x / MAX_TRAVEL));
+        } else { // Vertical movement
+            normalizedBias = Math.max(0, Math.min(1, (float) y / MAX_TRAVEL));
+        }
 
         params.horizontalBias = normalizedBias;
         slider.setLayoutParams(params);
     }
+
+
     private void makePostRequest(String url, JSONObject newData) {
         JsonObjectRequest postRequest = new JsonObjectRequest(Request.Method.PUT, url, newData,
                 new Response.Listener<JSONObject>() {
@@ -189,16 +210,4 @@ public class MainActivity extends AppCompatActivity {
         handler.removeCallbacks(fetchRunnable);
     }
 
-
-    private void moveSlider(int x, int y, int maxTravel) {
-        // Calculate the percentage position for the slider within its allowed range
-        float percentage = (float) y / maxTravel;
-
-        // Calculate the top margin for the slider based on the percentage
-        int topMargin = (int) (percentage * maxTravel);
-
-        // Update the slider's position
-        slider.setTranslationY(topMargin);
-
-    }
 }
