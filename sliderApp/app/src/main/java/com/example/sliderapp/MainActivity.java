@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -44,8 +45,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
-
-        slider = findViewById(R.id.slider_image);
         currentTravelTextView = findViewById(R.id.currentTravelTextView);
         dirChangeCountTextView = findViewById(R.id.dirChangeCountTextView);
         maxTravelTextView = findViewById(R.id.maxTraveTextView);
@@ -53,6 +52,9 @@ public class MainActivity extends AppCompatActivity {
         xTextView = findViewById(R.id.xTextView);
         yTextView = findViewById(R.id.yTextView);
         Button updateButton = findViewById(R.id.update_btn);
+
+        slider = findViewById(R.id.slider_image);
+
 
         reqQueue = Volley.newRequestQueue(this);
 
@@ -133,7 +135,9 @@ public class MainActivity extends AppCompatActivity {
                             movementDirectionTextView.setText(String.valueOf(movementDirection));
                             xTextView.setText(String.valueOf(x));
                             yTextView.setText(String.valueOf(y));
-                            moveSlider(x, y, maxTravel);
+                            //moveSlider(x, y, maxTravel);
+
+                            updateHorizontalBias(x);
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -149,7 +153,15 @@ public class MainActivity extends AppCompatActivity {
         );
         reqQueue.add(getRequest);
     }
+    private void updateHorizontalBias(int x) {
+        ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) slider.getLayoutParams();
 
+        // Assuming you want to normalize x value to be between 0 and 1 for bias
+        float normalizedBias = Math.max(0, Math.min(1, (float) x / 100)); // Adjust 100 based on your scale
+
+        params.horizontalBias = normalizedBias;
+        slider.setLayoutParams(params);
+    }
     private void makePostRequest(String url, JSONObject newData) {
         JsonObjectRequest postRequest = new JsonObjectRequest(Request.Method.PUT, url, newData,
                 new Response.Listener<JSONObject>() {
@@ -187,5 +199,6 @@ public class MainActivity extends AppCompatActivity {
 
         // Update the slider's position
         slider.setTranslationY(topMargin);
+
     }
 }
