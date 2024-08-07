@@ -101,7 +101,7 @@ public class SliderFacadeREST extends AbstractFacade<Slider> {
     //put on root resource returns forbidden response
     @PUT
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    @RolesAllowed({"RestGroup", "Admin"})
+    //@RolesAllowed({"RestGroup", "Admin"})
     public Response putOnRootResource() {
     return Response.status(Response.Status.NOT_ACCEPTABLE)
             .entity("PUT method not allowed on the root resource")
@@ -111,7 +111,7 @@ public class SliderFacadeREST extends AbstractFacade<Slider> {
     @PUT
     @Path("{id}")
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    @RolesAllowed({"RestGroup", "Admin"})
+    //@RolesAllowed({"RestGroup", "Admin"})
     public void edit(@PathParam("id") Long id, Slider entity) {
         super.edit(entity);
     }
@@ -124,7 +124,7 @@ public class SliderFacadeREST extends AbstractFacade<Slider> {
         super.remove(super.find(id));
         return Response.Status.ACCEPTED;
     }
-
+    
     //returns slider with matching id
     @GET
     @Path("{id}")
@@ -138,7 +138,7 @@ public class SliderFacadeREST extends AbstractFacade<Slider> {
     @GET
     @Override
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    @RolesAllowed({"RestGroup", "Admin"})
+    //@RolesAllowed({"RestGroup", "Admin"})
     public List<Slider> findAll() {
         return super.findAll();
     }
