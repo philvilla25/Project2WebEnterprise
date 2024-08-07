@@ -1,0 +1,1107 @@
+{
+	"info": {
+		"_postman_id": "990bdec3-0305-460a-a303-166dc5de8c96",
+		"name": "RESTful API Security Testing",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37508032"
+	},
+	"item": [
+		{
+			"name": "Get ALL Sliders - No Auth",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/slider-thomas/resources/cst8218.stan0304.slider.entity.sliderV2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"slider-thomas",
+						"resources",
+						"cst8218.stan0304.slider.entity.sliderV2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get ALL Sliders - Admin",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "q",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "Admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/slider-thomas/resources/cst8218.stan0304.slider.entity.sliderV2/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"slider-thomas",
+						"resources",
+						"cst8218.stan0304.slider.entity.sliderV2",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get ALL Sliders - RestGroup",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "RestAdmin",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "q",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/slider-thomas/resources/cst8218.stan0304.slider.entity.sliderV2/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"slider-thomas",
+						"resources",
+						"cst8218.stan0304.slider.entity.sliderV2",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Specifc Slider - No Auth",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/slider-thomas/resources/cst8218.stan0304.slider.entity.sliderV2/101",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"slider-thomas",
+						"resources",
+						"cst8218.stan0304.slider.entity.sliderV2",
+						"101"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Specifc Slider - Admin",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "Admin",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "q",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/slider-thomas/resources/cst8218.stan0304.slider.entity.sliderV2/101",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"slider-thomas",
+						"resources",
+						"cst8218.stan0304.slider.entity.sliderV2",
+						"101"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Specifc Slider - RestGroup",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "RestAdmin",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "q",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/slider-thomas/resources/cst8218.stan0304.slider.entity.sliderV2/101",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"slider-thomas",
+						"resources",
+						"cst8218.stan0304.slider.entity.sliderV2",
+						"101"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Slider Count - No Auth",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/slider-thomas/resources/cst8218.stan0304.slider.entity.sliderV2/count",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"slider-thomas",
+						"resources",
+						"cst8218.stan0304.slider.entity.sliderV2",
+						"count"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Slider Count - Admin",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "Admin",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "q",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/slider-thomas/resources/cst8218.stan0304.slider.entity.sliderV2/count",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"slider-thomas",
+						"resources",
+						"cst8218.stan0304.slider.entity.sliderV2",
+						"count"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Slider Count - RestGroup",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "RestAdmin",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "q",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/slider-thomas/resources/cst8218.stan0304.slider.entity.sliderV2/count",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"slider-thomas",
+						"resources",
+						"cst8218.stan0304.slider.entity.sliderV2",
+						"count"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Sliders Range - No Auth",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/slider-thomas/resources/cst8218.stan0304.slider.entity.sliderV2/0/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"slider-thomas",
+						"resources",
+						"cst8218.stan0304.slider.entity.sliderV2",
+						"0",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Sliders Range - Admin",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "Admin",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "q",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/slider-thomas/resources/cst8218.stan0304.slider.entity.sliderV2/0/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"slider-thomas",
+						"resources",
+						"cst8218.stan0304.slider.entity.sliderV2",
+						"0",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Sliders Range - RestGroup",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Put Sliders on root - No Auth",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"currentTravel\": 50,\r\n    \"dirChangeCount\": 0,\r\n    \"id\": 101,\r\n    \"maxTravel\": 0,\r\n    \"movementDirection\": 1,\r\n    \"size\": 50,\r\n    \"x\": 10,\r\n    \"y\": 5\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/slider-thomas/resources/cst8218.stan0304.slider.entity.sliderV2/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"slider-thomas",
+						"resources",
+						"cst8218.stan0304.slider.entity.sliderV2",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put Sliders on root - Admin",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				]
+			},
+			"response": []
+		},
+		{
+			"name": "Put Sliders on root - RestGroup",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "RestAdmin",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "q",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"currentTravel\": 50,\r\n    \"dirChangeCount\": 0,\r\n    \"id\": 1,\r\n    \"maxTravel\": 0,\r\n    \"movementDirection\": 1,\r\n    \"size\": 50,\r\n    \"x\": 10,\r\n    \"y\": 5\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/slider-thomas/resources/cst8218.stan0304.slider.entity.sliderV2/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"slider-thomas",
+						"resources",
+						"cst8218.stan0304.slider.entity.sliderV2",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put Sliders on ID - No Auth",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 101,\r\n    \"maxTravel\": 0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/slider-thomas/resources/cst8218.stan0304.slider.entity.sliderV2/101",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"slider-thomas",
+						"resources",
+						"cst8218.stan0304.slider.entity.sliderV2",
+						"101"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put Sliders on ID - Admin",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "Admin",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "q",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 1,\r\n    \"maxTravel\": 20\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/slider-thomas/resources/cst8218.stan0304.slider.entity.sliderV2/101",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"slider-thomas",
+						"resources",
+						"cst8218.stan0304.slider.entity.sliderV2",
+						"101"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put Sliders on ID - RestGroup",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "RestAdmin",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "q",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 101,\r\n    \"x\": 30\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/slider-thomas/resources/cst8218.stan0304.slider.entity.sliderV2/101",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"slider-thomas",
+						"resources",
+						"cst8218.stan0304.slider.entity.sliderV2",
+						"101"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Sliders with ID - No Auth",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/slider-thomas/resources/cst8218.stan0304.slider.entity.sliderV2/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"slider-thomas",
+						"resources",
+						"cst8218.stan0304.slider.entity.sliderV2",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Sliders with ID - Admin",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "Admin",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "q",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/slider-thomas/resources/cst8218.stan0304.slider.entity.sliderV2/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"slider-thomas",
+						"resources",
+						"cst8218.stan0304.slider.entity.sliderV2",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Sliders with ID - RestGroup",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "RestAdmin",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "q",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/slider-thomas/resources/cst8218.stan0304.slider.entity.sliderV2/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"slider-thomas",
+						"resources",
+						"cst8218.stan0304.slider.entity.sliderV2",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Sliders with ID - No Auth",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"currentTravel\": 50,\r\n    \"dirChangeCount\": 0,\r\n    \"id\": 1,\r\n    \"maxTravel\": 0,\r\n    \"movementDirection\": 1,\r\n    \"size\": 50,\r\n    \"x\": 10,\r\n    \"y\": 5\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/slider-thomas/resources/cst8218.stan0304.slider.entity.sliderV2/101",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"slider-thomas",
+						"resources",
+						"cst8218.stan0304.slider.entity.sliderV2",
+						"101"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Sliders with ID - Admin",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "Admin",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "q",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"currentTravel\": 50,\r\n    \"dirChangeCount\": 0,\r\n    \"id\": 1,\r\n    \"maxTravel\": 0,\r\n    \"movementDirection\": 1,\r\n    \"size\": 50,\r\n    \"x\": 10,\r\n    \"y\": 5\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/slider-thomas/resources/cst8218.stan0304.slider.entity.sliderV2/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"slider-thomas",
+						"resources",
+						"cst8218.stan0304.slider.entity.sliderV2",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Sliders with ID - RestGroup",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "RestAdmin",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "q",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/slider-thomas/resources/cst8218.stan0304.slider.entity.sliderV2/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"slider-thomas",
+						"resources",
+						"cst8218.stan0304.slider.entity.sliderV2",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Sliders on root- No Auth",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"currentTravel\": 50,\r\n    \"dirChangeCount\": 0,\r\n    \"id\": 101,\r\n    \"maxTravel\": 0,\r\n    \"movementDirection\": 1,\r\n    \"size\": 50,\r\n    \"x\": 10,\r\n    \"y\": 5\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/slider-thomas/resources/cst8218.stan0304.slider.entity.sliderV2/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"slider-thomas",
+						"resources",
+						"cst8218.stan0304.slider.entity.sliderV2",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Sliders on root- Admin",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "Admin",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "q",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"currentTravel\": 50,\r\n    \"dirChangeCount\": 7,\r\n    \"id\": 2,\r\n    \"maxTravel\": 12,\r\n    \"movementDirection\": 1,\r\n    \"size\": 50,\r\n    \"x\": 10,\r\n    \"y\": 5\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/slider-thomas/resources/cst8218.stan0304.slider.entity.sliderV2/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"slider-thomas",
+						"resources",
+						"cst8218.stan0304.slider.entity.sliderV2",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Sliders on root- RestGroup",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "RestAdmin",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "q",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"currentTravel\": 50,\r\n    \"dirChangeCount\": 20,\r\n    \"id\": 101 ,\r\n    \"maxTravel\": 20,\r\n    \"movementDirection\": 1,\r\n    \"size\": 50,\r\n    \"x\": 10,\r\n    \"y\": 5\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/slider-thomas/resources/cst8218.stan0304.slider.entity.sliderV2/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"slider-thomas",
+						"resources",
+						"cst8218.stan0304.slider.entity.sliderV2",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -20,7 +20,7 @@
     </session-config>
     <welcome-file-list>
         <welcome-file>faces/index.xhtml</welcome-file>
-    </welcome-file-list>
+    </welcome-file-list> 
     
     <security-constraint>
         <display-name>Slider Login</display-name>
@@ -32,9 +32,11 @@
        <auth-constraint>
             <description>Admin Role Required</description>
             <role-name>SliderAdmin</role-name>
+            <role-name>Admin</role-name>
         </auth-constraint>
               
     </security-constraint>
+    
     <security-constraint>
         <display-name>Slider Admin Login</display-name>
         <web-resource-collection>
@@ -49,12 +51,12 @@
         </auth-constraint>
              
     </security-constraint>
- <!--    
+
     <security-constraint>
         <display-name>REST API Login</display-name>
         <web-resource-collection>
             <web-resource-name>Protected REST API</web-resource-name>
-            <url-pattern>/cst8218.stan0304.slider.entity.slider/*</url-pattern>
+            <url-pattern>/cst8218.stan0304.slider.entity.sliderV2/*</url-pattern>
         </web-resource-collection>
       
         <auth-constraint>
@@ -63,5 +65,5 @@
         </auth-constraint>
                
     </security-constraint>
-   -->
+   
 </web-app>
