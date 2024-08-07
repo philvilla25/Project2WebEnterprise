@@ -29,11 +29,12 @@
             <description>Accessible to slider users only</description>
             <url-pattern>/faces/slider/*</url-pattern>
         </web-resource-collection>
-        <auth-constraint>
+       <auth-constraint>
             <description>Admin Role Required</description>
             <role-name>SliderAdmin</role-name>
             <role-name>Admin</role-name>
         </auth-constraint>
+              
     </security-constraint>
     
     <security-constraint>
@@ -43,22 +44,26 @@
             <description>Accessible to admin users only</description>
             <url-pattern>/faces/slideruser/*</url-pattern>
         </web-resource-collection>
+       
         <auth-constraint>
             <description>Admin Role Required</description>
             <role-name>Admin</role-name>
         </auth-constraint>
+             
     </security-constraint>
-    
+
     <security-constraint>
         <display-name>REST API Login</display-name>
         <web-resource-collection>
             <web-resource-name>Protected REST API</web-resource-name>
             <url-pattern>/cst8218.stan0304.slider.entity.sliderV2/*</url-pattern>
         </web-resource-collection>
+      
         <auth-constraint>
             <role-name>RestGroup</role-name>
             <role-name>Admin</role-name>
         </auth-constraint>
+               
     </security-constraint>
-
+   
 </web-app>

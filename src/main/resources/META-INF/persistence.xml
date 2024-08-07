@@ -4,6 +4,7 @@
   <persistence-unit name="slider_persistence_unit" transaction-type="JTA">
     <jta-data-source>java:comp/DefaultDataSource</jta-data-source>
     <properties>
+      <property name="jakarta.persistence.schema-generation.database.action" value="create"/>
     </properties>
   </persistence-unit>
 </persistence>

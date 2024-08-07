@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "985420041872",
+    "project_id": "loginauth-a82a5",
+    "storage_bucket": "loginauth-a82a5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:985420041872:android:aaf1e31a682f76f1665215",
+        "android_client_info": {
+          "package_name": "com.example.myapplication"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB97Z3dRRdZ45ZLQhkja1_y0iFrEM1-jNA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:985420041872:android:8d66aec06bfb058e665215",
+        "android_client_info": {
+          "package_name": "com.example.sliderapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB97Z3dRRdZ45ZLQhkja1_y0iFrEM1-jNA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
