@@ -49,7 +49,6 @@ public class SliderFacadeREST extends AbstractFacade<Slider> {
     */
     @POST
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    @RolesAllowed({"RestGroup", "Admin"})
     public Response create(Slider entity, @Context UriInfo uriInfo) {
         //if slider id is null, new slider is made
         if(entity.getId() == null){
@@ -78,7 +77,6 @@ public class SliderFacadeREST extends AbstractFacade<Slider> {
     @POST
     @Path("{id}")
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    @RolesAllowed({"RestGroup", "Admin"})
     public Response update(@PathParam("id") Long id, Slider entity, @Context UriInfo uriInfo) {
         //find the existing slider by id
         Slider existingSlider = super.find(id);
@@ -101,7 +99,6 @@ public class SliderFacadeREST extends AbstractFacade<Slider> {
     //put on root resource returns forbidden response
     @PUT
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    @RolesAllowed({"RestGroup", "Admin"})
     public Response putOnRootResource() {
     return Response.status(Response.Status.NOT_ACCEPTABLE)
             .entity("PUT method not allowed on the root resource")
@@ -111,7 +108,6 @@ public class SliderFacadeREST extends AbstractFacade<Slider> {
     @PUT
     @Path("{id}")
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    @RolesAllowed({"RestGroup", "Admin"})
     public void edit(@PathParam("id") Long id, Slider entity) {
         super.edit(entity);
     }
@@ -119,17 +115,15 @@ public class SliderFacadeREST extends AbstractFacade<Slider> {
     //deletes slider iwith matching id
     @DELETE
     @Path("{id}")
-    @RolesAllowed({"RestGroup", "Admin"})
     public Response.Status remove(@PathParam("id") Long id) {
         super.remove(super.find(id));
         return Response.Status.ACCEPTED;
     }
-
+    
     //returns slider with matching id
     @GET
     @Path("{id}")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    @RolesAllowed({"RestGroup", "Admin"})
     public Slider find(@PathParam("id") Long id) {
         return super.find(id);
     }
@@ -138,7 +132,6 @@ public class SliderFacadeREST extends AbstractFacade<Slider> {
     @GET
     @Override
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    @RolesAllowed({"RestGroup", "Admin"})
     public List<Slider> findAll() {
         return super.findAll();
     }
@@ -147,7 +140,6 @@ public class SliderFacadeREST extends AbstractFacade<Slider> {
     @GET
     @Path("{from}/{to}")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    @RolesAllowed({"RestGroup", "Admin"})
     public List<Slider> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
         return super.findRange(new int[]{from, to});
     }
@@ -156,7 +148,6 @@ public class SliderFacadeREST extends AbstractFacade<Slider> {
     @GET
     @Path("count")
     @Produces(MediaType.TEXT_PLAIN)
-    @RolesAllowed({"RestGroup", "Admin"})
     public String countREST() {
         return String.valueOf(super.count());
     }
