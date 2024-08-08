@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+
     <ImageView
         android:id="@+id/slider_image"
         android:layout_width="100sp"
@@ -14,10 +15,10 @@
         android:src="@drawable/baseline_electric_bike_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.083"
+        app:layout_constraintHorizontal_bias="0.086"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.217" />
+        app:layout_constraintVertical_bias="0.077" />
 
     <EditText
         android:id="@+id/currentTravelTextView"
@@ -30,12 +31,23 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/slider_image" />
 
+    <TextView
+        android:id="@+id/currentView"
+        android:text="Current View"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.095"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/currentTravelTextView" />
+
 
     <EditText
         android:id="@+id/dirChangeCountTextView"
         android:layout_width="50sp"
         android:layout_height="50sp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="15dp"
         android:hint="Dir Change Count"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
@@ -43,11 +55,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/currentTravelTextView" />
 
+    <TextView
+        android:id="@+id/dirChangeCount"
+        android:text="DirChangeCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.095"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dirChangeCountTextView" />
+
     <EditText
         android:id="@+id/maxTraveTextView"
         android:layout_width="50sp"
         android:layout_height="50sp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="15dp"
         android:hint="Max Travel"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
@@ -55,11 +78,23 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/dirChangeCountTextView" />
 
+    <TextView
+        android:id="@+id/maxTravel"
+        android:text="Max Travel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.095"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/maxTraveTextView" />
+
+
     <EditText
         android:id="@+id/movementDirectionTextView"
         android:layout_width="50sp"
         android:layout_height="50sp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="15dp"
         android:hint="Movement Direction"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
@@ -67,29 +102,86 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/maxTraveTextView" />
 
+    <TextView
+        android:id="@+id/movementDirection"
+        android:text="Movement Direction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.095"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/movementDirectionTextView" />
+
+    <EditText
+        android:id="@+id/sizeEditText"
+        android:layout_width="50sp"
+        android:layout_height="50sp"
+        android:layout_marginTop="15dp"
+        android:hint="Size"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.094"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/movementDirectionTextView" />
+
+    <TextView
+        android:id="@+id/size"
+        android:text="Size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.095"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sizeEditText" />
+
+
     <EditText
         android:id="@+id/xTextView"
         android:layout_width="50sp"
         android:layout_height="50sp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="15dp"
         android:hint="X"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.094"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/movementDirectionTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/sizeEditText" />
+
+    <TextView
+        android:id="@+id/xVal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-10dp"
+        android:text="X"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.134"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/xTextView" />
 
     <EditText
         android:id="@+id/yTextView"
         android:layout_width="50sp"
         android:layout_height="50sp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="15dp"
         android:hint="Y"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.094"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/xTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/xTextView" />
+
+    <TextView
+        android:id="@+id/yVal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-10dp"
+        android:text="Y"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.133"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/yTextView" />
 
     <Button
         android:id="@+id/update_btn"

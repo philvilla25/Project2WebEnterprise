@@ -35,7 +35,7 @@ import org.json.JSONObject;
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
-    private EditText currentTravelTextView, dirChangeCountTextView, maxTravelTextView, movementDirectionTextView, xTextView, yTextView;
+    private EditText currentTravelTextView, dirChangeCountTextView, maxTravelTextView, movementDirectionTextView, sizeEditText,xTextView, yTextView;
     private ImageView slider;
     private Handler handler;
     private Runnable fetchRunnable;
@@ -52,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
         dirChangeCountTextView = findViewById(R.id.dirChangeCountTextView);
         maxTravelTextView = findViewById(R.id.maxTraveTextView);
         movementDirectionTextView = findViewById(R.id.movementDirectionTextView);
+        sizeEditText = findViewById(R.id.sizeEditText);
         xTextView = findViewById(R.id.xTextView);
         yTextView = findViewById(R.id.yTextView);
         Button updateButton = findViewById(R.id.update_btn);
@@ -73,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
                     newData.put("id", 1);
                     newData.put("maxTravel", maxTravelTextView.getText().toString());
                     newData.put("movementDirection", movementDirectionTextView.getText().toString());
-                    newData.put("size", "10"); // Assuming 'size' is fixed for this example
+                    newData.put("size", sizeEditText.getText().toString());
                     newData.put("x", xTextView.getText().toString());
                     newData.put("y", yTextView.getText().toString());
                 } catch (JSONException e) {
@@ -132,6 +133,7 @@ public class MainActivity extends AppCompatActivity {
                             int dirChangeCount = sliderData.getInt("dirChangeCount");
                             int maxTravel = sliderData.getInt("maxTravel");
                             int movementDirection = sliderData.getInt("movementDirection");
+                            int size = sliderData.getInt("size");
                             int x = sliderData.getInt("x");
                             int y = sliderData.getInt("y");
 
@@ -140,6 +142,7 @@ public class MainActivity extends AppCompatActivity {
                             Log.d(TAG, "Direction Change Count: " + dirChangeCount);
                             Log.d(TAG, "Max Travel: " + maxTravel);
                             Log.d(TAG, "Movement Direction: " + movementDirection);
+                            Log.d(TAG, "Movement Direction: " + size);
                             Log.d(TAG, "X: " + x);
                             Log.d(TAG, "Y: " + y);
 
@@ -148,6 +151,7 @@ public class MainActivity extends AppCompatActivity {
                             dirChangeCountTextView.setText(String.valueOf(dirChangeCount));
                             maxTravelTextView.setText(String.valueOf(maxTravel));
                             movementDirectionTextView.setText(String.valueOf(movementDirection));
+                            sizeEditText.setText(String.valueOf(size));
                             xTextView.setText(String.valueOf(x));
                             yTextView.setText(String.valueOf(y));
 
