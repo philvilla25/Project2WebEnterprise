@@ -1,0 +1,85 @@
+{
+  "id": "3c040f6d-ee0a-4785-9530-aade57fb53ef",
+  "version": "2.0",
+  "name": "JSF Testing ",
+  "url": "",
+  "tests": [{
+    "id": "d76d171e-d295-4470-b269-c1c73bebf5a2",
+    "name": "Correct Password, Non Admin",
+    "commands": [{
+      "id": "d08373f7-e8d1-44cf-9df7-baced52ddaeb",
+      "comment": "",
+      "command": "open",
+      "target": "/slider-thomas/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ecb2ad1e-edb6-4be7-8cf3-03c34ecd78d1",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "550x692",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "7df6bf83-9317-447e-8b1f-af288a908192",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Show All Slider Items",
+      "targets": [
+        ["linkText=Show All Slider Items", "linkText"],
+        ["css=a:nth-child(2)", "css:finder"],
+        ["xpath=//a[contains(text(),'Show All Slider Items')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/slider-thomas/faces/slider/List.xhtml;jsessionid=a9ea9b4618e48f68f77a3be9d3c6')]", "xpath:href"],
+        ["xpath=//a", "xpath:position"],
+        ["xpath=//a[contains(.,'Show All Slider Items')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "17469d88-fdfa-4985-ac5e-a3d24e06651b",
+      "comment": "User, that is not Admin or SliderAdmin can not access the 'Show All Sliders Page'",
+      "command": "assertText",
+      "target": "css=h1",
+      "targets": [
+        ["css=h1", "css:finder"],
+        ["xpath=//h1", "xpath:position"],
+        ["xpath=//h1[contains(.,'HTTP Status 403 - Forbidden')]", "xpath:innerText"]
+      ],
+      "value": "HTTP Status 403 - Forbidden"
+    }]
+  }, {
+    "id": "af1daef2-76ad-4bb7-9c24-d543796ae5f3",
+    "name": "Correct Password, Admin",
+    "commands": [{
+      "id": "6a284969-9806-4994-b411-8e4a8b3f91a2",
+      "comment": "",
+      "command": "open",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "efa73f76-8fa3-48f8-a2d8-80771cb8d76a",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "cdf95a08-84bf-4c0b-8f3d-7c533f4a5722",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "78c52614-e9de-4396-952d-cd0aae9ba4bb",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["d76d171e-d295-4470-b269-c1c73bebf5a2"]
+  }],
+  "urls": ["http://localhost:8080/"],
+  "plugins": []
+}

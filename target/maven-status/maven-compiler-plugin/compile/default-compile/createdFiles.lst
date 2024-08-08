@@ -21,6 +21,7 @@ cst8218\stan0304\slider\business\AbstractFacade.class
 cst8218\stan0304\slider\resources\SliderSingleton$1.class
 cst8218\stan0304\slider\exceptions\PreexistingEntityException.class
 cst8218\stan0304\slider\entity\Slider.class
+cst8218\stan0304\slider\service\SliderFacadeREST2.class
 cst8218\stan0304\slider\util\PaginationHelper.class
 cst8218\stan0304\users\SlideruserController$SlideruserControllerConverter.class
 cst8218\stan0304\slider\exceptions\NonexistentEntityException.class

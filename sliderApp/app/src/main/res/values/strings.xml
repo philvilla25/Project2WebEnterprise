@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">sliderApp</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="btn_register">Register</string>
+    <string name="click_to_login">click_to_login</string>
+    <string name="click_to_logins">Click to Login</string>
+    <string name="click_to_register">Click to Register</string>
+</resources>
