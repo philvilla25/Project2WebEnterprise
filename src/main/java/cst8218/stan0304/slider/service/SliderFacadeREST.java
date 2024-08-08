@@ -125,7 +125,9 @@ public class SliderFacadeREST extends AbstractFacade<Slider> {
     @Path("{id}")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     public Slider find(@PathParam("id") Long id) {
-        return super.find(id);
+        Slider existingSlider = super.find(id);
+        existingSlider.timeStep();
+        return existingSlider;
     }
 
     //creates xml or json of all sliders
@@ -133,6 +135,7 @@ public class SliderFacadeREST extends AbstractFacade<Slider> {
     @Override
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     public List<Slider> findAll() {
+        
         return super.findAll();
     }
     

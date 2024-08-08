@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8" />
-    <title>Hello World</title>
+    <title>Slider React Page</title>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script async src="https://ga.jspm.io/npm:es-module-shims@1.7.0/dist/es-module-shims.js"></script>
     <script type="importmap">
@@ -43,6 +43,17 @@
                 const timeInterval = setInterval(getSliders, 300);
                 return () => clearInterval(timeInterval);
             }, []);
+            
+            const canvasRef = useRef(null);
+            useEffect(() => {
+            const ctx = canvasRef.current.getContext("2d");
+            ctx.clearRect(0, 0, canvasRef.current.width,
+            canvasRef.current.height);
+            ctx.fillStyle = "#0000FF";
+            sliders.forEach(item => {
+            ctx.fillRect(400,item.y,item.movementDirection,10)
+            });
+            })
 
             const handleClick = (event, field, index) => {
                 setSelected({ "index": index, "field": field, "value": event.target.value });
@@ -73,6 +84,7 @@
             };
 
             return (
+                <div>
                 <form onSubmit={handleSubmit}>
                     <table>
                         <thead>
@@ -113,6 +125,14 @@
                         </tbody>
                     </table>
                 </form>
+                  <canvas
+                    ref={canvasRef}
+                    width={500}
+                    height={500}
+                  />
+                </div>
+                        
+                     
             );
         }
 
