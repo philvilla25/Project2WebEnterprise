@@ -3,6 +3,7 @@ package cst8218.stan0304.slider;
 import cst8218.stan0304.slider.entity.Slider;
 import cst8218.stan0304.slider.util.JsfUtil;
 import cst8218.stan0304.slider.util.PaginationHelper;
+import jakarta.annotation.PostConstruct;
 
 import java.io.Serializable;
 import java.util.ResourceBundle;
@@ -19,6 +20,7 @@ import jakarta.faces.model.SelectItem;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.PersistenceUnit;
 import jakarta.transaction.UserTransaction;
+import java.util.Locale;
 
 /*
 controller for slider class,
@@ -38,8 +40,27 @@ public class SliderController implements Serializable {
     private SliderJpaController jpaController = null;
     private PaginationHelper pagination;
     private int selectedItemIndex;
+    private Locale locale;
 
     public SliderController() {
+    }
+    
+    @PostConstruct
+    public void init() {
+        locale = FacesContext.getCurrentInstance().getExternalContext().getRequestLocale();
+    }
+    
+    public Locale getLocale() {
+        return locale;
+    }
+    
+    public String getLanguage() {
+        return locale.getLanguage();
+    }
+    
+    public void setLanguage(String language) {
+        locale = new Locale(language);
+        FacesContext.getCurrentInstance().getViewRoot().setLocale(locale);
     }
 
     public Slider getSelected() {
