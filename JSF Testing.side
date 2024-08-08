@@ -1,0 +1,228 @@
+{
+  "id": "3c040f6d-ee0a-4785-9530-aade57fb53ef",
+  "version": "2.0",
+  "name": "JSF Testing ",
+  "url": "http://localhost:8080/slider-thomas/",
+  "tests": [{
+    "id": "d76d171e-d295-4470-b269-c1c73bebf5a2",
+    "name": "Correct Password, Non Admin",
+    "commands": [{
+      "id": "d3b76ea8-5a3c-4005-b69a-621bfd35942a",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/slider-thomas/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "6447b7b1-32a0-466f-b621-db4f16ce58f6",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1298x696",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b30a859f-15cc-4542-ba4c-2da39515f1a8",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Show All Slider Items",
+      "targets": [
+        ["linkText=Show All Slider Items", "linkText"],
+        ["css=a:nth-child(2)", "css:finder"],
+        ["xpath=//a[contains(text(),'Show All Slider Items')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/slider-thomas/faces/slider/List.xhtml')]", "xpath:href"],
+        ["xpath=//a", "xpath:position"],
+        ["xpath=//a[contains(.,'Show All Slider Items')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "8049fa0f-2def-47b5-9265-f0bddd5e65a0",
+      "comment": "Random User not authorized",
+      "command": "assertText",
+      "target": "css=h1",
+      "targets": [
+        ["css=h1", "css:finder"],
+        ["xpath=//h1", "xpath:position"],
+        ["xpath=//h1[contains(.,'HTTP Status 403 - Forbidden')]", "xpath:innerText"]
+      ],
+      "value": "HTTP Status 403 - Forbidden"
+    }]
+  }, {
+    "id": "af1daef2-76ad-4bb7-9c24-d543796ae5f3",
+    "name": "Correct Password, Admin",
+    "commands": [{
+      "id": "8565035f-04cb-454e-8e80-cc6c167471b3",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/slider-thomas/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "55b43766-5807-4101-83f2-77e7293a0840",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1298x696",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "0f0f7fd4-c70e-4d01-9fcd-b7483663de1d",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Show All Slider Items",
+      "targets": [
+        ["linkText=Show All Slider Items", "linkText"],
+        ["css=a:nth-child(2)", "css:finder"],
+        ["xpath=//a[contains(text(),'Show All Slider Items')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/slider-thomas/faces/slider/List.xhtml')]", "xpath:href"],
+        ["xpath=//a", "xpath:position"],
+        ["xpath=//a[contains(.,'Show All Slider Items')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "faf801a2-7fd7-42e2-b80a-dc659f55cb7c",
+      "comment": "Admin can log in into show slider",
+      "command": "assertText",
+      "target": "css=h1",
+      "targets": [
+        ["css=h1", "css:finder"],
+        ["xpath=//h1", "xpath:position"],
+        ["xpath=//h1[contains(.,'List')]", "xpath:innerText"]
+      ],
+      "value": "List"
+    }]
+  }, {
+    "id": "b78789b2-4a2c-426e-a4e8-e3d8c7938228",
+    "name": "Correct Password - Slider Admin",
+    "commands": [{
+      "id": "6142a4e6-69ce-44b4-a04a-7257d3549e05",
+      "comment": "",
+      "command": "open",
+      "target": "/slider-thomas/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f0a2b3ea-8363-404b-9ef1-72ee53400135",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1298x696",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ce27e147-e141-48cd-b261-550422fa4cc4",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Show All Slider Items",
+      "targets": [
+        ["linkText=Show All Slider Items", "linkText"],
+        ["css=a:nth-child(2)", "css:finder"],
+        ["xpath=//a[contains(text(),'Show All Slider Items')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/slider-thomas/faces/slider/List.xhtml')]", "xpath:href"],
+        ["xpath=//a", "xpath:position"],
+        ["xpath=//a[contains(.,'Show All Slider Items')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "5c95547d-d196-4f69-88a8-e25282272697",
+      "comment": "Slider Admin can log in",
+      "command": "assertText",
+      "target": "css=h1",
+      "targets": [
+        ["css=h1", "css:finder"],
+        ["xpath=//h1", "xpath:position"],
+        ["xpath=//h1[contains(.,'List')]", "xpath:innerText"]
+      ],
+      "value": "List"
+    }]
+  }, {
+    "id": "39def529-ea08-4be3-a0b4-6cfb7e3847d2",
+    "name": "Slider Admin into Admin Dashboard",
+    "commands": [{
+      "id": "1260473e-ff3b-4a7f-a53b-6ef7b04c5722",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/slider-thomas/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "4ce9a61c-e6fe-4bec-adae-0325535452ac",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1298x696",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f9bd471a-a43c-4e02-91bf-354b220a0b34",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Admin",
+      "targets": [
+        ["linkText=Admin", "linkText"],
+        ["css=a:nth-child(4)", "css:finder"],
+        ["xpath=//a[contains(text(),'Admin')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/slider-thomas/faces/slideruser/List.xhtml')]", "xpath:href"],
+        ["xpath=//a[2]", "xpath:position"],
+        ["xpath=//a[contains(.,'Admin')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "d0731f03-e15b-4f58-a09d-6478d8fe109a",
+      "comment": "The Slider Admin can not get into Admin Dashboard",
+      "command": "assertText",
+      "target": "css=h1",
+      "targets": [
+        ["css=h1", "css:finder"],
+        ["xpath=//h1", "xpath:position"],
+        ["xpath=//h1[contains(.,'HTTP Status 403 - Forbidden')]", "xpath:innerText"]
+      ],
+      "value": "HTTP Status 403 - Forbidden"
+    }]
+  }, {
+    "id": "99e7281b-7817-4131-9934-e2afa4a42a5d",
+    "name": "Admin 2 Test",
+    "commands": [{
+      "id": "23b6070d-0394-4f2e-92fa-01a4feb0dcbc",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/slider-thomas/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f792967f-f264-4576-9dad-90185b17ac4e",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1298x696",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "02efe128-6575-4dd0-b8cd-47ccd384a05b",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Admin",
+      "targets": [
+        ["linkText=Admin", "linkText"],
+        ["css=a:nth-child(4)", "css:finder"],
+        ["xpath=//a[contains(text(),'Admin')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/slider-thomas/faces/slideruser/List.xhtml')]", "xpath:href"],
+        ["xpath=//a[2]", "xpath:position"],
+        ["xpath=//a[contains(.,'Admin')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "8d5c5b11-30d5-4538-b619-7bb42ed3a630",
+      "comment": "Admin can get into page",
+      "command": "assertText",
+      "target": "css=h1",
+      "targets": [],
+      "value": "List"
+    }]
+  }],
+  "suites": [{
+    "id": "78c52614-e9de-4396-952d-cd0aae9ba4bb",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["d76d171e-d295-4470-b269-c1c73bebf5a2"]
+  }],
+  "urls": ["http://localhost:8080/"],
+  "plugins": []
+}
