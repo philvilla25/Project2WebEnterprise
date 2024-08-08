@@ -24,6 +24,9 @@ import jakarta.ws.rs.core.UriInfo;
 import java.net.URI;
 import java.util.List;
 
+/**
+* Version 2 of RESTful API
+*/
 
 /**
  * Contains all of the paths used by the requests in the URL.
